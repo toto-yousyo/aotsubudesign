@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "design-system",
-  "author": "Toto",
+  "author": {
+    "name": "Toto"
+  },
   "keywords": [
     "gatsby"
   ],
@@ -15,7 +17,8 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_4c8956c89958a6c"
   },
   "dependencies": {
     "autoprefixer": "^10.4.20",
@@ -48,6 +51,7 @@
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^8.19.1",
     "@typescript-eslint/parser": "^8.19.1",
+    "chromatic": "^11.23.0",
     "eslint-plugin-storybook": "^0.11.2",
     "storybook": "^8.4.7",
     "typescript": "^5.3.3"
