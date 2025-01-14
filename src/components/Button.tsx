@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Primary } from './Button.stories';
 
 export interface ButtonProps {
   /** Is this the principal call to action on the page? */
@@ -21,11 +22,20 @@ export const Button = ({
   label,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'text-base leading-0' : 'storybook-button--secondary';
+  const sizeClasses = {
+    small: "py-sm px-base text-xs",
+    medium: "py-sm px-lg text-sm",
+    large: "py-base px-xl text-base",
+  };
+
+  const mode = primary
+    ? 'bg-primary text-white hover:bg-primary/80'
+    : 'bg-secondary text-white hover:bg-secondary/80';
+
   return (
     <button
       type="button"
-      className={['w-full', 'text-green-50', 'bg-primary', `storybook-button--${size}`, mode].join(' ')}
+      className={`rounded font-sans ${sizeClasses[size]} ${mode}`}
       style={{ backgroundColor }}
       {...props}
     >
@@ -33,4 +43,5 @@ export const Button = ({
     </button>
   );
 };
+
 

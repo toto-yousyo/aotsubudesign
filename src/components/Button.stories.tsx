@@ -25,30 +25,32 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+const label = '入力内容を確認する';
+
 export const Primary: Story = {
   args: {
     primary: true,
-    label: 'Test',
+    label: label,
   },
 };
 
 export const Secondary: Story = {
   args: {
-    label: 'Button',
+    label: label,
   },
 };
 
 export const Large: Story = {
   args: {
     size: 'large',
-    label: 'Button',
+    label: label,
   },
 };
 
 export const Small: Story = {
   args: {
     size: 'small',
-    label: "small",
+    label: label,
   },
 };
 
