@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import path from 'path'
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -13,5 +14,28 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\.css$/, 
+      use: [
+        'style-loader', 
+        'css-loader', 
+        {
+          loader: 'postcss-loader', 
+          options: {
+            postcssOptions: {
+              plugins: [
+                require('tailwindcss'), 
+                require('autoprefixer'), 
+              ], 
+            }, 
+          }, 
+        }, 
+      ], 
+      include: path.resolve(__dirname, '../'), 
+    });
+
+    return config;
+  }, 
 };
 export default config;
