@@ -1,14 +1,14 @@
-
-import React from 'react';
-import { Primary } from './Button.stories';
+import React from "react";
+import { Primary } from "./Button.stories";
 
 export interface ButtonProps {
   /** Is this the principal call to action on the page? */
   primary?: boolean;
+  secondary?: boolean;
   /** What background color to use */
   backgroundColor?: string;
   /** How large should the button be? */
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   /** Button contents */
   label: string;
   /** Optional click handler */
@@ -16,8 +16,9 @@ export interface ButtonProps {
 }
 /** Primary UI component for user interaction */
 export const Button = ({
-  primary = false,
-  size = 'medium',
+  primary,
+  secondary,
+  size = "medium",
   backgroundColor,
   label,
   ...props
@@ -29,8 +30,10 @@ export const Button = ({
   };
 
   const mode = primary
-    ? 'bg-primary text-white hover:bg-primary/80'
-    : 'bg-secondary text-white hover:bg-secondary/80';
+    ? "bg-primary text-white hover:bg-primary/70"
+    : secondary
+      ? "text-primary hover:bg-green-200 border solid border-primary"
+      : "text-gray-700 bg-transparent border solid border-gray-700 hover:bg-gray-100";
 
   return (
     <button
@@ -43,5 +46,3 @@ export const Button = ({
     </button>
   );
 };
-
-
